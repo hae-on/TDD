@@ -2,6 +2,7 @@ const Calculator = require("../calculator.js");
 
 // 묶기
 describe("Calculator", () => {
+  // 함수마다 처음에 수행
   let cal;
   beforeEach(() => {
     cal = new Calculator();
@@ -26,6 +27,12 @@ describe("Calculator", () => {
     cal.set(1);
     cal.add(2);
     expect(cal.value).toBe(3);
+  });
+
+  it("add should throw an error of value is greater than 100", () => {
+    expect(() => {
+      cal.add(101);
+    }).toThrow("Value can not be greater than 100");
   });
 
   it("substract", () => {
