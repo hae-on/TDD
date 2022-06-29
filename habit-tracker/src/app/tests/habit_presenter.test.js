@@ -1,4 +1,4 @@
-import HabitPresenter from "../habit_presenter";
+import HabitPresenter from "../../app/habit_presenter";
 
 describe("HabitPresenter", () => {
   const habits = [
