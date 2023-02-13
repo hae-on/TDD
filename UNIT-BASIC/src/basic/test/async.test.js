@@ -1,32 +1,32 @@
-const fetchProduct = require("../../basic/async.js");
+const fetchProduct = require('../async');
 
-describe("Async", () => {
-  it("async-done", (done) => {
+describe('Async', () => {
+  test('async - done', (done) => {
     fetchProduct().then((item) => {
-      expect(item).toEqual({ item: "Milk", price: 200 });
+      expect(item).toEqual({ item: 'Milk', price: 200 });
       done();
     });
   });
 
-  it("async-return", () => {
+  test('async - return', () => {
     return fetchProduct().then((item) => {
-      expect(item).toEqual({ item: "Milk", price: 200 });
+      expect(item).toEqual({ item: 'Milk', price: 200 });
     });
   });
 
-  it("async-await", async () => {
+  test('async - await', async () => {
     const product = await fetchProduct();
-    expect(product).toEqual({ item: "Milk", price: 200 });
+    expect(product).toEqual({ item: 'Milk', price: 200 });
   });
 
-  it("async-resolves", async () => {
+  test('async - resolves', () => {
     return expect(fetchProduct()).resolves.toEqual({
-      item: "Milk",
+      item: 'Milk',
       price: 200,
     });
   });
 
-  it("async-reject", async () => {
-    return expect(fetchProduct("error")).rejects.toEqual("network error");
+  test('async - rejects', () => {
+    return expect(fetchProduct('error')).rejects.toBe('network error');
   });
 });

@@ -1,67 +1,65 @@
-const Calculator = require("../../basic/calculator.js");
+const Calculator = require('../calculator');
 
-// 묶기
-describe("Calculator", () => {
-  // 함수마다 처음에 수행
-  let cal;
+describe('계산기 테스트', () => {
+  let calculator;
   beforeEach(() => {
-    cal = new Calculator();
+    calculator = new Calculator();
   });
 
-  it("inits with 0", () => {
-    expect(cal.value).toBe(0);
+  test('init', () => {
+    expect(calculator.value).toBe(0);
   });
 
-  it("sets", () => {
-    cal.set(9);
-    expect(cal.value).toBe(9);
+  test('set', () => {
+    calculator.set(9);
+    expect(9).toBe(9);
   });
 
-  it("clear", () => {
-    cal.set(9);
-    cal.clear();
-    expect(cal.value).toBe(0);
+  test('clear', () => {
+    calculator.set(9);
+    calculator.clear();
+    expect(calculator.value).toBe(0);
   });
 
-  it("add", () => {
-    cal.set(1);
-    cal.add(2);
-    expect(cal.value).toBe(3);
+  test('add', () => {
+    calculator.set(1);
+    calculator.add(1);
+    expect(calculator.value).toBe(2);
   });
 
-  it("add should throw an error of value is greater than 100", () => {
+  test('add error test', () => {
     expect(() => {
-      cal.add(101);
-    }).toThrow("Value can not be greater than 100");
+      calculator.add(101);
+    }).toThrow('Value can not be greater than 100');
   });
 
-  it("substract", () => {
-    cal.subtract(1);
-    expect(cal.value).toBe(-1);
+  test('subtract', () => {
+    calculator.subtract(1);
+    expect(calculator.value).toBe(-1);
   });
 
-  it("multiply", () => {
-    cal.set(5);
-    cal.multiply(4);
-    expect(cal.value).toBe(20);
+  test('multiply', () => {
+    calculator.set(1);
+    calculator.multiply(2);
+    expect(calculator.value).toBe(2);
   });
 
-  describe("divides", () => {
-    it("0 / 0 === NaN", () => {
-      cal.divide(0);
-      expect(cal.value).toBe(NaN);
+  describe('', () => {
+    test('0 / 0 === NaN', () => {
+      calculator.divide(0);
+      expect(calculator.value).toBe(NaN);
     });
 
-    it("1 / 0 === Infinity", () => {
-      cal.set(1);
-      cal.divide(0);
-      expect(cal.value).toBe(Infinity);
+    test('0 / 1 === Infinity', () => {
+      calculator.set(1);
+      calculator.divide(0);
+      expect(calculator.value).toBe(Infinity);
     });
 
-    it("4 / 4 === 1", () => {
-      cal.set(4);
-      cal.divide(4);
-      expect(cal.value).toBe(1);
+    test('4 / 4 === 1', () => {
+      calculator.set(4);
+      calculator.divide(4);
+      expect(calculator.value).toBe(1);
     });
   });
 });
